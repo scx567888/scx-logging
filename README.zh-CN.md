@@ -1,4 +1,4 @@
-<h1>SCX Logging</h1>
+## SCX Logging
 <p align="center">
     <a target="_blank" href="https://github.com/scx567888/scx-logging/actions/workflows/ci.yml">
         <img src="https://github.com/scx567888/scx-logging/actions/workflows/ci.yml/badge.svg" alt="CI"/>
@@ -17,3 +17,13 @@
         <img src="https://img.shields.io/github/license/scx567888/scx-logging" alt="license"/>
     </a>
 </p>
+
+## Maven
+
+``` xml
+<dependency>
+    <groupId>cool.scx</groupId>
+    <artifactId>scx-logging</artifactId>
+    <version>{version}</version>
+</dependency>
+```
