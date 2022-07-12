@@ -14,7 +14,6 @@
     </a>
     <a target="_blank" href="https://github.com/scx567888/scx-logging/blob/master/LICENSE">
         <img src="https://img.shields.io/github/license/scx567888/scx-logging" alt="license"/>
-        <img src="https://img.shields.io/github/license/scx567888/scx-logging" alt="license"/>
     </a>
 </p>
 
