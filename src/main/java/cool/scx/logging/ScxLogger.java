@@ -43,7 +43,7 @@ public final class ScxLogger {
      *
      * @param name a
      */
-    public ScxLogger(String name) {
+    ScxLogger(String name) {
         this.name = name;
     }
 
