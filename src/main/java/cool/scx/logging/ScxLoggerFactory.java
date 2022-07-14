@@ -3,6 +3,7 @@ package cool.scx.logging;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * ScxLoggerFactory
@@ -99,6 +100,7 @@ public final class ScxLoggerFactory {
      * @param newLevel a {@link cool.scx.logging.ScxLoggingLevel} object
      */
     public static void setDefaultLevel(ScxLoggingLevel newLevel) {
+        Objects.requireNonNull(newLevel, "defaultLevel 不能为 null");
         defaultLevel = newLevel;
     }
 
@@ -108,6 +110,7 @@ public final class ScxLoggerFactory {
      * @param newType a {@link cool.scx.logging.ScxLoggingType} object
      */
     public static void setDefaultType(ScxLoggingType newType) {
+        Objects.requireNonNull(newType, "defaultType 不能为 null");
         defaultType = newType;
     }
 
@@ -245,10 +248,10 @@ public final class ScxLoggerFactory {
      * @param newDefaultStackTrace      a {@link java.lang.Boolean} object
      */
     public static void updateDefault(ScxLoggingLevel newDefaultLevel, ScxLoggingType newDefaultType, Path newDefaultStoredDirectory, boolean newDefaultStackTrace) {
-        defaultLevel = newDefaultLevel;
-        defaultType = newDefaultType;
-        defaultStoredDirectory = newDefaultStoredDirectory;
-        defaultStackTrace = newDefaultStackTrace;
+        setDefaultLevel(newDefaultLevel);
+        setDefaultType(newDefaultType);
+        setDefaultStoredDirectory(newDefaultStoredDirectory);
+        setDefaultStackTrace(newDefaultStackTrace);
     }
 
 }
