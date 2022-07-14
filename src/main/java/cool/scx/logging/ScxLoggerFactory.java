@@ -3,6 +3,7 @@ package cool.scx.logging;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * ScxLoggerFactory
@@ -35,7 +36,7 @@ public final class ScxLoggerFactory {
     /**
      * 是否启用堆栈跟踪
      */
-    private static Boolean defaultStackTrace = false;
+    private static boolean defaultStackTrace = false;
 
     /**
      * 获取默认级别
@@ -69,7 +70,7 @@ public final class ScxLoggerFactory {
      *
      * @return a
      */
-    static Boolean defaultStackTrace() {
+    static boolean defaultStackTrace() {
         return defaultStackTrace;
     }
 
@@ -133,7 +134,9 @@ public final class ScxLoggerFactory {
      * @param newDefaultStoredDirectory a {@link java.nio.file.Path} object
      * @param newDefaultStackTrace      a {@link java.lang.Boolean} object
      */
-    public static void updateDefault(ScxLoggingLevel newDefaultLevel, ScxLoggingType newDefaultType, Path newDefaultStoredDirectory, Boolean newDefaultStackTrace) {
+    public static void updateDefault(ScxLoggingLevel newDefaultLevel, ScxLoggingType newDefaultType, Path newDefaultStoredDirectory, boolean newDefaultStackTrace) {
+        Objects.requireNonNull(newDefaultLevel, "newDefaultLevel 不能为 null");
+        Objects.requireNonNull(newDefaultType, "newDefaultType 不能为 null");
         defaultLevel = newDefaultLevel;
         defaultType = newDefaultType;
         defaultStoredDirectory = newDefaultStoredDirectory;

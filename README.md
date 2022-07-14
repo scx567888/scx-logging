@@ -1,4 +1,5 @@
 ## SCX Logging
+
 <p align="center">
     <a target="_blank" href="https://github.com/scx567888/scx-logging/actions/workflows/ci.yml">
         <img src="https://github.com/scx567888/scx-logging/actions/workflows/ci.yml/badge.svg" alt="CI"/>
