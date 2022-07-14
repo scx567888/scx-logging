@@ -21,7 +21,6 @@ final class ScxLoggerMessage extends StringWriter {
 
     private final String logFileName;
 
-
     /**
      * <p>Constructor for ScxLoggerMessage.</p>
      *
