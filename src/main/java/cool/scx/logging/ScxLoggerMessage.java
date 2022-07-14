@@ -76,6 +76,9 @@ final class ScxLoggerMessage extends StringWriter {
      * @param logStoredPath a
      */
     public void writeToFile(Path logStoredPath) {
+        if (logStoredPath == null) {
+            return;
+        }
         try {
             var path = Path.of(logStoredPath.toString(), this.logFileName);
             Files.createDirectories(path.getParent());

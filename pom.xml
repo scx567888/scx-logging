@@ -13,7 +13,7 @@
     <packaging>jar</packaging>
     <name>scx-logging</name>
 
-    <version>0.0.2</version>
+    <version>0.0.3</version>
 
     <description>SCX Logging</description>
     <url>https://github.com/scx567888/scx-logging</url>
