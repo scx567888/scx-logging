@@ -99,7 +99,7 @@ public final class ScxLoggerFactory {
      * @param newLevel a {@link cool.scx.logging.ScxLoggingLevel} object
      */
     public static void setDefaultLevel(ScxLoggingLevel newLevel) {
-        ScxLoggerFactory.defaultLevel = newLevel;
+        defaultLevel = newLevel;
     }
 
     /**
@@ -108,7 +108,7 @@ public final class ScxLoggerFactory {
      * @param newType a {@link cool.scx.logging.ScxLoggingType} object
      */
     public static void setDefaultType(ScxLoggingType newType) {
-        ScxLoggerFactory.defaultType = newType;
+        defaultType = newType;
     }
 
     /**
@@ -117,7 +117,7 @@ public final class ScxLoggerFactory {
      * @param newStoredDirectory a {@link java.nio.file.Path} object
      */
     public static void setDefaultStoredDirectory(Path newStoredDirectory) {
-        ScxLoggerFactory.defaultStoredDirectory = newStoredDirectory;
+        defaultStoredDirectory = newStoredDirectory;
     }
 
     /**
@@ -126,7 +126,7 @@ public final class ScxLoggerFactory {
      * @param newStackTrace a boolean
      */
     public static void setDefaultStackTrace(boolean newStackTrace) {
-        ScxLoggerFactory.defaultStackTrace = newStackTrace;
+        defaultStackTrace = newStackTrace;
     }
 
     /**
