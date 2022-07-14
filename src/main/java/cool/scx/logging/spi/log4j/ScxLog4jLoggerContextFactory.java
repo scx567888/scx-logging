@@ -22,6 +22,7 @@ public final class ScxLog4jLoggerContextFactory implements LoggerContextFactory 
      * a
      */
     public ScxLog4jLoggerContextFactory() {
+
     }
 
     /**

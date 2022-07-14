@@ -30,6 +30,9 @@ public final class ScxSLF4JServiceProvider implements SLF4JServiceProvider {
      */
     private static final IMarkerFactory markerFactory = new BasicMarkerFactory();
 
+    /**
+     * a
+     */
     private final MDCAdapter mdcAdapter = new NOPMDCAdapter();
 
     /**
