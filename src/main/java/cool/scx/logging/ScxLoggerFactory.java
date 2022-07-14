@@ -3,7 +3,6 @@ package cool.scx.logging;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * ScxLoggerFactory
@@ -14,27 +13,27 @@ import java.util.Objects;
 public final class ScxLoggerFactory {
 
     /**
-     * Constant <code>LOGGER_CACHE</code>
+     * 存储所有的 日志对象
      */
-    private static final Map<String, ScxLogger> LOGGER_CACHE = new HashMap<>();
+    private static final Map<String, ScxLogger> LOGGER_MAP = new HashMap<>();
 
     /**
-     * 日志级别
+     * 默认的日志级别
      */
     private static ScxLoggingLevel defaultLevel = ScxLoggingLevel.ERROR;
 
     /**
-     * 日志类型
+     * 默认的日志类型
      */
     private static ScxLoggingType defaultType = ScxLoggingType.CONSOLE;
 
     /**
-     * 存储目录
+     * 默认的存储目录
      */
     private static Path defaultStoredDirectory = null;
 
     /**
-     * 是否启用堆栈跟踪
+     * 默认是否启用堆栈跟踪
      */
     private static boolean defaultStackTrace = false;
 
@@ -91,56 +90,123 @@ public final class ScxLoggerFactory {
      * @return a
      */
     public static ScxLogger getLogger(String name) {
-        var logger = LOGGER_CACHE.get(name);
-        if (logger == null) {
-            var scxLogger = new ScxLogger(name);
-            LOGGER_CACHE.put(name, scxLogger);
-            logger = scxLogger;
-        }
-        return logger;
+        return LOGGER_MAP.computeIfAbsent(name, ScxLogger::new);
     }
 
     /**
-     * 更新指定的 Logger 信息
+     * <p>Setter for the field <code>defaultLevel</code>.</p>
      *
-     * @param name            a {@link java.lang.String} object
-     * @param level           a {@link cool.scx.logging.ScxLoggingLevel} object
-     * @param type            a {@link cool.scx.logging.ScxLoggingType} object
-     * @param storedDirectory a {@link java.nio.file.Path} object
-     * @param stackTrace      a {@link java.lang.Boolean} object
+     * @param newLevel a {@link cool.scx.logging.ScxLoggingLevel} object
      */
-    public static void updateLogger(String name, ScxLoggingLevel level, ScxLoggingType type, Path storedDirectory, Boolean stackTrace) {
-        getLogger(name).update(level, type, storedDirectory, stackTrace);
+    public static void setDefaultLevel(ScxLoggingLevel newLevel) {
+        ScxLoggerFactory.defaultLevel = newLevel;
     }
 
     /**
-     * 更新指定的 Logger 信息
+     * <p>Setter for the field <code>defaultType</code>.</p>
      *
-     * @param clazz           a
-     * @param level           a
-     * @param type            a
-     * @param storedDirectory a
-     * @param stackTrace      a
+     * @param newType a {@link cool.scx.logging.ScxLoggingType} object
      */
-    public static void updateLogger(Class<?> clazz, ScxLoggingLevel level, ScxLoggingType type, Path storedDirectory, Boolean stackTrace) {
-        getLogger(clazz).update(level, type, storedDirectory, stackTrace);
+    public static void setDefaultType(ScxLoggingType newType) {
+        ScxLoggerFactory.defaultType = newType;
     }
 
     /**
-     * 更新默认日志信息
+     * <p>Setter for the field <code>defaultStoredDirectory</code>.</p>
      *
-     * @param newDefaultLevel           a {@link cool.scx.logging.ScxLoggingLevel} object
-     * @param newDefaultType            a {@link cool.scx.logging.ScxLoggingType} object
-     * @param newDefaultStoredDirectory a {@link java.nio.file.Path} object
-     * @param newDefaultStackTrace      a {@link java.lang.Boolean} object
+     * @param newStoredDirectory a {@link java.nio.file.Path} object
      */
-    public static void updateDefault(ScxLoggingLevel newDefaultLevel, ScxLoggingType newDefaultType, Path newDefaultStoredDirectory, boolean newDefaultStackTrace) {
-        Objects.requireNonNull(newDefaultLevel, "newDefaultLevel 不能为 null");
-        Objects.requireNonNull(newDefaultType, "newDefaultType 不能为 null");
-        defaultLevel = newDefaultLevel;
-        defaultType = newDefaultType;
-        defaultStoredDirectory = newDefaultStoredDirectory;
-        defaultStackTrace = newDefaultStackTrace;
+    public static void setDefaultStoredDirectory(Path newStoredDirectory) {
+        ScxLoggerFactory.defaultStoredDirectory = newStoredDirectory;
+    }
+
+    /**
+     * <p>Setter for the field <code>defaultStackTrace</code>.</p>
+     *
+     * @param newStackTrace a boolean
+     */
+    public static void setDefaultStackTrace(boolean newStackTrace) {
+        ScxLoggerFactory.defaultStackTrace = newStackTrace;
+    }
+
+    /**
+     * <p>setLevel.</p>
+     *
+     * @param name     a {@link java.lang.String} object
+     * @param newLevel a {@link cool.scx.logging.ScxLoggingLevel} object
+     */
+    public static void setLevel(String name, ScxLoggingLevel newLevel) {
+        getLogger(name).setLevel(newLevel);
+    }
+
+    /**
+     * <p>setType.</p>
+     *
+     * @param name    a {@link java.lang.String} object
+     * @param newType a {@link cool.scx.logging.ScxLoggingType} object
+     */
+    public static void setType(String name, ScxLoggingType newType) {
+        getLogger(name).setType(newType);
+    }
+
+    /**
+     * <p>setStoredDirectory.</p>
+     *
+     * @param name               a {@link java.lang.String} object
+     * @param newStoredDirectory a {@link java.nio.file.Path} object
+     */
+    public static void setStoredDirectory(String name, Path newStoredDirectory) {
+        getLogger(name).setStoredDirectory(newStoredDirectory);
+    }
+
+    /**
+     * <p>setStackTrace.</p>
+     *
+     * @param name          a {@link java.lang.String} object
+     * @param newStackTrace a boolean
+     */
+    public static void setStackTrace(String name, boolean newStackTrace) {
+        getLogger(name).setStackTrace(newStackTrace);
+    }
+
+    /**
+     * <p>setLevel.</p>
+     *
+     * @param clazz    a {@link java.lang.Class} object
+     * @param newLevel a {@link cool.scx.logging.ScxLoggingLevel} object
+     */
+    public static void setLevel(Class<?> clazz, ScxLoggingLevel newLevel) {
+        getLogger(clazz).setLevel(newLevel);
+    }
+
+    /**
+     * <p>setType.</p>
+     *
+     * @param clazz   a {@link java.lang.Class} object
+     * @param newType a {@link cool.scx.logging.ScxLoggingType} object
+     */
+    public static void setType(Class<?> clazz, ScxLoggingType newType) {
+        getLogger(clazz).setType(newType);
+    }
+
+    /**
+     * <p>setStoredDirectory.</p>
+     *
+     * @param clazz              a {@link java.lang.Class} object
+     * @param newStoredDirectory a {@link java.nio.file.Path} object
+     */
+    public static void setStoredDirectory(Class<?> clazz, Path newStoredDirectory) {
+        getLogger(clazz).setStoredDirectory(newStoredDirectory);
+    }
+
+    /**
+     * <p>setStackTrace.</p>
+     *
+     * @param clazz         a {@link java.lang.Class} object
+     * @param newStackTrace a boolean
+     */
+    public static void setStackTrace(Class<?> clazz, boolean newStackTrace) {
+        getLogger(clazz).setStackTrace(newStackTrace);
     }
 
 }

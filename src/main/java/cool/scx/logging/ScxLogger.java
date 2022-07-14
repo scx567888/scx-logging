@@ -123,17 +123,38 @@ public final class ScxLogger {
     }
 
     /**
-     * <p>update.</p>
+     * <p>Setter for the field <code>level</code>.</p>
      *
-     * @param newLevel           a {@link cool.scx.logging.ScxLoggingLevel} object
-     * @param newType            a {@link cool.scx.logging.ScxLoggingType} object
-     * @param newStoredDirectory a {@link java.nio.file.Path} object
-     * @param newStackTrace      a {@link java.lang.Boolean} object
+     * @param newLevel a {@link cool.scx.logging.ScxLoggingLevel} object
      */
-    void update(ScxLoggingLevel newLevel, ScxLoggingType newType, Path newStoredDirectory, Boolean newStackTrace) {
+    void setLevel(ScxLoggingLevel newLevel) {
         this.level = newLevel;
+    }
+
+    /**
+     * <p>Setter for the field <code>type</code>.</p>
+     *
+     * @param newType a {@link cool.scx.logging.ScxLoggingType} object
+     */
+    void setType(ScxLoggingType newType) {
         this.type = newType;
+    }
+
+    /**
+     * <p>Setter for the field <code>storedDirectory</code>.</p>
+     *
+     * @param newStoredDirectory a {@link java.nio.file.Path} object
+     */
+    void setStoredDirectory(Path newStoredDirectory) {
         this.storedDirectory = newStoredDirectory;
+    }
+
+    /**
+     * <p>Setter for the field <code>stackTrace</code>.</p>
+     *
+     * @param newStackTrace a {@link java.lang.Boolean} object
+     */
+    void setStackTrace(Boolean newStackTrace) {
         this.stackTrace = newStackTrace;
     }
 
